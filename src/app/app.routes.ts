@@ -1,3 +1,49 @@
 import { Routes } from '@angular/router';
+import { SplashComponent } from './pages/splash/splash.component';
+import { LoginComponent } from './pages/Login/login/login.component';
+import { RegisterComponent } from './pages/Register/register/register.component';
+import { HomeComponent } from './pages/home/home.component';
+import { AdminExamDetailsComponent } from './pages/admin-exam-details/admin-exam-details.component';
+import { AddExamComponent } from './pages/add-exam/add-exam.component';
+import { EditExamComponent } from './pages/edit-exam/edit-exam.component';
+import { ExamResultsComponent } from './pages/exam-results/exam-results.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    {
+        path: "",
+        redirectTo: "splash",
+        pathMatch: "full",
+    },
+    {
+        path: "splash",
+        component: SplashComponent
+    },
+    {
+        path: "login",
+        component: LoginComponent
+    },
+    {
+        path: "register",
+        component: RegisterComponent
+    },
+    {
+        path: "home",
+        component: HomeComponent,
+    },
+    {
+        path: 'examDetails/:examId',
+        component: AdminExamDetailsComponent,
+    },
+    {
+        path: 'addExam',
+        component: AddExamComponent,
+    },
+    {
+        path: 'editExam/:examId',
+        component: EditExamComponent,
+    },
+    {
+        path: 'examResults/:examId',
+        component: ExamResultsComponent,
+    }
+];

@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Quiz Craft</a>
+    @if (currentUser) {
+      <div class="d-flex align-items-center ms-auto">
+        <div class="text-white me-3">
+          <strong>Welcome </strong> {{ currentUser.username }}
+        </div>
+        <div class="badge me-3" 
+            [ngClass]="{
+              'bg-success': currentUser.role === 'Admin',
+              'bg-primary': currentUser.role === 'User'
+            }">
+          {{ currentUser.role }}
+        </div>
+        <button class="btn btn-danger" (click)="logout()">
+            Logout
+        </button>
+      </div>
+  }
+  </div>
+</nav>

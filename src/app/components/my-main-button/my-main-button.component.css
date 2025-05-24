@@ -1,0 +1,23 @@
+.elevated-button {
+    width: 30%;
+    background-color: #597b75; /* New primary color */
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Elevation effect */
+}
+
+.elevated-button:hover {
+    background-color: #46635d; /* Slightly darker on hover */
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.3); /* Increased elevation */
+}
+
+.elevated-button:active {
+    background-color: #364c48; /* Even darker when clicked */
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Pressed effect */
+}

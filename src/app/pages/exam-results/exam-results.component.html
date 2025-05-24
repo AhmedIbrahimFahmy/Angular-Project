@@ -1,0 +1,6 @@
+<app-navbar></app-navbar>
+
+
+@for (result of examResults; track $index) {
+    <app-user-exam-result-card [result]="result"></app-user-exam-result-card>
+}
