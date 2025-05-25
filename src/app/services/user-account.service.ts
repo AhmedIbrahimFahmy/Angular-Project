@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { API_ENDPOINTS } from '../shared/api-endpoints';
 import { Observable } from 'rxjs';
 import { UserExamResult } from '../models/userExamResult';
+import { Exam } from '../models/exam';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,14 @@ export class UserAccountService {
   // take part in exam
 
   // submit exam's answers
+
+
+  // get all available exams
+  getAllAvailableExams(): Observable<Exam[]>{
+    let token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<Exam[]>(API_ENDPOINTS.GET_USER_AVAILABLE_EXAMS, {headers: headers});
+  }
 
 }

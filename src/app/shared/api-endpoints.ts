@@ -1,8 +1,13 @@
 const baseUrl = "https://quizcraft.runasp.net/api";
 export const API_ENDPOINTS = {
+
+  //////////////////////// Authentications APIs ////////////////////////
+
   LOGIN: `${baseUrl}/Account/login`,
   REGISTER: `${baseUrl}/Account/register`,
 
+
+  //////////////////////// Admin APIs ////////////////////////
 
   GET_USER: `${baseUrl}/user`,
   GET_All_EXAMS: `${baseUrl}/Exam/all`,
@@ -17,17 +22,13 @@ export const API_ENDPOINTS = {
   DELETE_EXAM: (examId:number) => `${baseUrl}/Exam/${examId}`,
 
 
-
+  //////////////////////// User APIs ////////////////////////
 
   GET_USER_EXAMS: `${baseUrl}/User/exam-results`,
   GET_USER_EXAM_RESULT: (examId:number) => `${baseUrl}/User/exam-result/${examId}`,
+  GET_USER_AVAILABLE_EXAMS: `${baseUrl}/User/available-exams`,
 
   POST_USER_TAKE_EXAM: (examId:number) => `${baseUrl}/User/take-exam/${examId}`,
 
   PUT_USER_SUBMIT_ANSWERS: (examId:number) => `${baseUrl}/User/submit-answer/${examId}`,
-
-
-
-
-
 };

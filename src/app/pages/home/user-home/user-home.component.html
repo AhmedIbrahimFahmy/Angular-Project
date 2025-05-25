@@ -24,24 +24,24 @@
     </div>
   </div>
 
-  <hr>
+  <hr style="height:4px;background-color:black">
 
   <!-- Available Exams -->
   <div>
     <h4 style="color: #bddaa5;">Available Exams</h4>
     <div class="row">
-      <!-- @for (exam of availableExams; track $index) {
+      @for (exam of availableExams; track $index) {
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card border-0 shadow-sm" style="background-color: #bddaa5;">
             <div class="card-body">
               <h5 class="card-title text-dark">{{ exam.name }}</h5>
               <p class="card-text"><strong>Duration:</strong> {{ exam.durationInMinutes }} min</p>
               <p class="card-text"><strong>Total Points:</strong> {{ exam.totalPoints }}</p>
-              <a [routerLink]="['/exam', exam.id]" class="btn btn-light btn-sm text-dark">Start Exam</a>
+              <a class="btn btn-light btn-sm text-dark">Enter</a>
             </div>
           </div>
         </div>
-      } -->
+      }
     </div>
   </div>
 </div>

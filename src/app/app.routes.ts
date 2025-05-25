@@ -7,6 +7,9 @@ import { AdminExamDetailsComponent } from './pages/admin-exam-details/admin-exam
 import { AddExamComponent } from './pages/add-exam/add-exam.component';
 import { EditExamComponent } from './pages/edit-exam/edit-exam.component';
 import { ExamResultsComponent } from './pages/exam-results/exam-results.component';
+import { UserExamResultComponent } from './pages/user-exam-result/user-exam-result.component';
+import { BeforeExamStartComponent } from './pages/before-exam-start/before-exam-start.component';
+import { ExamStartComponent } from './pages/exam-start/exam-start.component';
 
 export const routes: Routes = [
     {
@@ -45,5 +48,17 @@ export const routes: Routes = [
     {
         path: 'examResults/:examId',
         component: ExamResultsComponent,
+    },
+    {
+        path: 'userExamResult/:examId',
+        component: UserExamResultComponent,
+    },
+    {
+        path: 'beforeExamStart/:examId',
+        component: BeforeExamStartComponent,
+    },
+    {
+        path: 'examStart/:examId',
+        component: ExamStartComponent,
     }
 ];
