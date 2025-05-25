@@ -27,6 +27,7 @@
           id="questionPoints-{{groupIndex}}"
           formControlName="points" 
           min="1"
+          max="10"
           placeholder="1"
           required
           [class.invalid]="questionFormGroup.get('points')?.invalid && questionFormGroup.get('points')?.touched">

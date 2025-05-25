@@ -1,4 +1,4 @@
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { UserExamResult } from '../../../models/userExamResult';
 import { UserAccountService } from './../../../services/user-account.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +13,7 @@ import { Exam } from '../../../models/exam';
 })
 export class UserHomeComponent implements OnInit{
   
-  constructor(private userAccountService:UserAccountService, private router:Router){}
+  constructor(private userAccountService:UserAccountService, private router:Router, private route:ActivatedRoute){}
 
   takenExamsResult:UserExamResult[] = [];
   availableExams: Exam[] = [];
@@ -40,6 +40,15 @@ export class UserHomeComponent implements OnInit{
           console.log(`Error: ${error}`);
         }
       });
+  }
+
+
+  goEnterExam(examId:number){
+    this.router.navigate(['/EnterExam', examId]);
+  }
+
+  goExamResult(examId:number){
+    this.router.navigate(['/userExamResult', examId]);
   }
 
 

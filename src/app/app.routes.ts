@@ -54,7 +54,7 @@ export const routes: Routes = [
         component: UserExamResultComponent,
     },
     {
-        path: 'beforeExamStart/:examId',
+        path: 'EnterExam/:examId',
         component: BeforeExamStartComponent,
     },
     {

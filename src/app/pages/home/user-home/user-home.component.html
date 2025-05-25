@@ -15,8 +15,8 @@
             <div class="card-body" style="background-color: #f9fdf9;">
               <h5 class="card-title" style="color: #597b75;">{{ result.exam.name }}</h5>
               <p class="card-text"><strong>Score:</strong> {{ result.score }}</p>
-              <p class="card-text"><strong>Date Taken:</strong> {{ result.dateTaken | date:'shortDate' }}</p>
-              <a class="btn btn-outline-success btn-sm">View Result</a>
+              <p class="card-text"><strong>Date Taken:</strong> {{ result.dateTaken | date:'longDate' }}</p>
+              <a class="btn btn-outline-primary btn-sm" (click)="goExamResult(result.exam.id)">View Result</a>
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@
               <h5 class="card-title text-dark">{{ exam.name }}</h5>
               <p class="card-text"><strong>Duration:</strong> {{ exam.durationInMinutes }} min</p>
               <p class="card-text"><strong>Total Points:</strong> {{ exam.totalPoints }}</p>
-              <a class="btn btn-light btn-sm text-dark">Enter</a>
+              <button class="btn btn-success" (click)="goEnterExam(exam.id)">Enter</button>
             </div>
           </div>
         </div>
