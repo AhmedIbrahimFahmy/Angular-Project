@@ -10,6 +10,8 @@ import { ExamResultsComponent } from './pages/exam-results/exam-results.componen
 import { UserExamResultComponent } from './pages/user-exam-result/user-exam-result.component';
 import { BeforeExamStartComponent } from './pages/before-exam-start/before-exam-start.component';
 import { ExamStartComponent } from './pages/exam-start/exam-start.component';
+import { AvailableExamsComponent } from './pages/available-exams/available-exams.component';
+import { TakenExamsComponent } from './pages/taken-exams/taken-exams.component';
 
 export const routes: Routes = [
     {
@@ -60,5 +62,13 @@ export const routes: Routes = [
     {
         path: 'examStart/:examId',
         component: ExamStartComponent,
+    },
+    {
+        path: 'available-exams',
+        component: AvailableExamsComponent,
+    },
+    {
+        path: 'taken-exams',
+        component: TakenExamsComponent
     }
 ];

@@ -34,6 +34,7 @@ export class AdminHomeComponent implements OnInit {
         });
 
         console.log(this.examsList);
+        this.examsList.reverse();
       },
       error: (error) => {
         console.log(error);

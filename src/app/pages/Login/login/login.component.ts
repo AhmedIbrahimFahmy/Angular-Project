@@ -1,5 +1,5 @@
 import { routes } from './../../../app.routes';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MyFormFieldComponent } from "../../../components/my-form-field/my-form-field.component";
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MyMainButtonComponent } from "../../../components/my-main-button/my-main-button.component";
@@ -31,6 +31,8 @@ export class LoginComponent {
   passwordErrorMessage:string = "";
 
 
+  @Output() onLoggedInEvent = new EventEmitter();
+
   get getUsernameController():FormControl{
     return this.loginFormGroup.controls['username'];
   }
@@ -38,19 +40,22 @@ export class LoginComponent {
     return this.loginFormGroup.controls['password'];
   }
 
+
   logIn(){
     var usernameValue = this.loginFormGroup.get("username")!.value;
     var passwordValue = this.loginFormGroup.get("password")!.value;
-    console.log(usernameValue);
-    console.log(passwordValue);
+    // console.log(usernameValue);
+    // console.log(passwordValue);
 
     // this.router.navigate(['/home']);
     this.authServices.login({userName: usernameValue!, password: passwordValue!}).subscribe({
       next: (response) => {
         var token = response['token'];
         localStorage.setItem('authToken', token);
-        console.log(`Response: ${response['token']}`);
+        // console.log(`Response: ${response['token']}`);
 
+        this.onLoggedInEvent.emit();
+        
         this.router.navigate(['/home']);
       },
       error: (e) => {
@@ -58,8 +63,8 @@ export class LoginComponent {
         this.ErrorMessage = e['error']['errors'][0];
         this.usernameErrorMessage = e['error']['errors']['UserName'];
         this.passwordErrorMessage = e['error']['errors']['Password'];
-        console.log(this.ErrorMessage);
-        console.log(`Error: ${e['status']}`);
+        // console.log(this.ErrorMessage);
+        // console.log(`Error: ${e['status']}`);
       },
     });
   }

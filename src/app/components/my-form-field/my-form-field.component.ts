@@ -10,6 +10,7 @@ import { FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 export class MyFormFieldComponent {
   @Input() myFieldController = new FormControl('');
   @Input() lable: string = "lable";
+  @Input() type: string = "text";
 
   
 }

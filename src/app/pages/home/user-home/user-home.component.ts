@@ -2,12 +2,14 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { UserExamResult } from '../../../models/userExamResult';
 import { UserAccountService } from './../../../services/user-account.service';
 import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Exam } from '../../../models/exam';
+import { UserResultCardComponent } from "../../../components/user-result-card/user-result-card.component";
+import { AvailableExamCardComponent } from "../../../components/available-exam-card/available-exam-card.component";
 
 @Component({
   selector: 'app-user-home',
-  imports: [DatePipe],
+  imports: [CommonModule, UserResultCardComponent, AvailableExamCardComponent],
   templateUrl: './user-home.component.html',
   styleUrl: './user-home.component.css'
 })
@@ -24,6 +26,7 @@ export class UserHomeComponent implements OnInit{
           console.log(response);
           this.takenExamsResult = response.map((result) => UserExamResult.fromJson(result));
           console.log(this.takenExamsResult);
+          this.takenExamsResult.reverse();
         },
         error: (error) => {
           console.log(`Error: ${error}`);
@@ -35,6 +38,7 @@ export class UserHomeComponent implements OnInit{
         next: (response) => {
           this.availableExams = response;
           console.log(this.availableExams);
+          this.availableExams.reverse();
         },
         error: (error) => {
           console.log(`Error: ${error}`);
@@ -52,6 +56,12 @@ export class UserHomeComponent implements OnInit{
   }
 
 
+  goTakeExams(){
+    this.router.navigate(['/taken-exams']);
+  }
 
+  goAvailableExams(){
+    this.router.navigate(['/available-exams']);
+  }
   
 }

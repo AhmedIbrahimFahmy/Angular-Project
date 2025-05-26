@@ -13,7 +13,7 @@ import { Question } from '../../models/question';
 
 @Component({
   selector: 'app-edit-exam',
-  imports: [ReactiveFormsModule, CommonModule, NavbarComponent, MyFormFieldComponent, AddQuestionCardComponent, MyMainButtonComponent],
+  imports: [ReactiveFormsModule, CommonModule, MyFormFieldComponent, AddQuestionCardComponent, MyMainButtonComponent, NavbarComponent],
   templateUrl: './edit-exam.component.html',
   styleUrl: './edit-exam.component.css'
 })

@@ -17,19 +17,49 @@ export class NavbarComponent {
 
   constructor(private userService: UserService,private authService: AuthenticationService, private router:Router){}
 
-  currentUser!:User;
+  currentUser!:User | null;
 
-  ngOnInit() : void {
+  ngOnInit(): void {
     this.authService.getUserData().subscribe({
       next: (response) => {
-          this.currentUser = User.fromObject(response);
-          this.userService.setUser(this.currentUser);
+        this.currentUser = User.fromObject(response);
+        this.userService.setUser(this.currentUser);
       },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
+
+  gettingUser(){
+    this.authService.getUserData().subscribe({
+      next: (response) => {
+        this.currentUser = User.fromObject(response);
+        this.userService.setUser(this.currentUser);
+      },
+      error: (error) => {
+        console.log(error);
+      }
     });
   }
 
   logout(){
+    this.currentUser = null;
+    localStorage.removeItem("authToken");
     this.router.navigate(['/login']);
+  }
+
+  goHome(){
+    this.router.navigate(['/home']);
+  }
+
+  goTakeExams(){
+    this.router.navigate(['/taken-exams']);
+  }
+
+  goAvailableExams(){
+    this.router.navigate(['/available-exams']);
   }
 
 }

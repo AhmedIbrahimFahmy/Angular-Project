@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-exam',
-  imports: [NavbarComponent, MyFormFieldComponent, FormsModule, ReactiveFormsModule, MyMainButtonComponent, AddQuestionCardComponent],
+  imports: [MyFormFieldComponent, FormsModule, ReactiveFormsModule, MyMainButtonComponent, AddQuestionCardComponent, NavbarComponent],
   templateUrl: './add-exam.component.html',
   styleUrl: './add-exam.component.css'
 })

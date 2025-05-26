@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserAccountService } from '../../services/user-account.service';
 import { ExamService } from '../../services/exam.service';
@@ -14,7 +14,7 @@ import { NavbarComponent } from "../../components/navbar/navbar.component";
   templateUrl: './exam-start.component.html',
   styleUrl: './exam-start.component.css'
 })
-export class ExamStartComponent implements OnInit{
+export class ExamStartComponent implements OnInit, OnDestroy{
   constructor(private route:ActivatedRoute,
     private router:Router,
     private userAccountService:UserAccountService, 
@@ -30,10 +30,14 @@ export class ExamStartComponent implements OnInit{
   examForm!: FormGroup;
   errorMessage: string = "";
 
+  remainingSeconds: number = 0;
+  timeoutId: any;
+
   ngOnInit(): void {
     this.examId = Number(this.route.snapshot.paramMap.get("examId"));
 
-
+    
+    
     // Taking part in the Exam
     this.userAccountService.takePartInExam(this.examId).subscribe({
       next: (response) => {
@@ -46,13 +50,16 @@ export class ExamStartComponent implements OnInit{
             console.log("Got Exam Data");
             this.exam = Exam.fromJson(response);
 
-
-
           // Getting Exam Questions
             this.examService.getExamQuestions(this.examId).subscribe({
             next: (response) => {
               console.log("Got Exam Exam's Questions");
               this.examQuestions = response.map((q) => Question.fromJson(q));
+
+
+              // Set the duration
+              this.remainingSeconds = this.exam.durationInMinutes * 60;
+              this.startCountdown();
 
 
               // Generating form controllers for the questions
@@ -64,7 +71,7 @@ export class ExamStartComponent implements OnInit{
                 (this.examForm.get('answers') as FormArray).push(
                   this.fb.group({
                     questionId: [question.id],
-                    selectedChoiceId: [null, Validators.required]
+                    selectedChoiceId: [null]
                   })
                 );
               });
@@ -89,6 +96,17 @@ export class ExamStartComponent implements OnInit{
 
   }
 
+  private startCountdown(): void {
+    if (this.remainingSeconds > 0) {
+      this.timeoutId = setTimeout(() => {
+        this.remainingSeconds--;
+        this.startCountdown();
+      }, 1000);
+    } else {
+      this.submitExam();
+    }
+  }
+
 
   submitExam() {
     if (this.examForm.valid) {
@@ -110,6 +128,25 @@ export class ExamStartComponent implements OnInit{
     }
     else{
       this.errorMessage = "make sure you answer all the questions";
+    }
+  }
+
+
+
+
+  get minutes(): number {
+    return Math.floor(this.remainingSeconds / 60);
+  }
+
+  get seconds(): number {
+    return this.remainingSeconds % 60;
+  }
+
+
+
+  ngOnDestroy(): void {
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
     }
   }
 }

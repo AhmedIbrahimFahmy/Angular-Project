@@ -1,22 +1,51 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Quiz Craft</a>
-    @if (currentUser) {
-      <div class="d-flex align-items-center ms-auto">
-        <div class="text-white me-3">
-          <strong>Welcome </strong> {{ currentUser.username }}
+    <a class="navbar-brand fw-bold" href="#">Quiz Craft</a>
+
+    @if (currentUser != null) {
+      <div class="ms-auto d-flex align-items-center gap-3 flex-wrap">
+
+        <a class="btn me-2"
+            style="background-color: #1f9e8f; color: #fff;"
+            (click)="goHome()"
+            >
+            Home
+          </a>
+
+        <!-- Navigation for User Role -->
+        @if (currentUser.role === 'User') {
+          <a class="btn me-2"
+            style="background-color: #8fae8f; color: #fff;"
+            (click)="goAvailableExams()"
+            >
+            Available Exams
+          </a>
+          <a class="btn"
+            style="background-color: #597b75; color: #fff;"
+            (click)="goTakeExams()">
+            Taken Exams
+          </a>
+        }
+
+        <!-- Welcome Text -->
+        <div class="text-white">
+          <span class="fw-semibold">Welcome,</span> {{ currentUser.username }}
         </div>
-        <div class="badge me-3" 
-            [ngClass]="{
-              'bg-success': currentUser.role === 'Admin',
-              'bg-primary': currentUser.role === 'User'
-            }">
+
+        <!-- User Role Badge -->
+        <span class="badge rounded-pill px-3 py-2"
+              [ngClass]="{
+                'bg-success': currentUser.role === 'Admin',
+                'bg-primary': currentUser.role === 'User'
+              }">
           {{ currentUser.role }}
-        </div>
-        <button class="btn btn-danger" (click)="logout()">
-            Logout
+        </span>
+
+        <!-- Logout Button -->
+        <button class="btn btn-outline-danger" (click)="logout()">
+          Logout
         </button>
       </div>
-  }
+    }
   </div>
 </nav>

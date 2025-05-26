@@ -9,6 +9,10 @@
         <p><strong>Total Points:</strong> {{ exam.totalPoints }}</p>
         <p><strong>Duration:</strong> {{ exam.durationInMinutes }} minutes</p>
 
+        <div class="badge bg-warning text-dark p-2 fs-5">
+          ⏱ {{ minutes }}:{{ seconds < 10 ? '0' + seconds : seconds }}
+        </div>
+
         <hr />
 
         <div formArrayName="answers">

@@ -21,7 +21,7 @@
             }
 
 
-            <app-my-form-field lable="Password" [myFieldController]="getPasswordController"></app-my-form-field>
+            <app-my-form-field lable="Password" [myFieldController]="getPasswordController" type="password"></app-my-form-field>
             @if (getPasswordController.hasError('required') && getPasswordController.touched == true) {
                 <p class="error-message">Password is required</p>
                 <br>

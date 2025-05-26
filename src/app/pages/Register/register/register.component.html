@@ -21,7 +21,7 @@
             }
             
             
-            <app-my-form-field lable="Password" [myFieldController]="getPasswordController"></app-my-form-field>
+            <app-my-form-field lable="Password" [myFieldController]="getPasswordController" type="password"></app-my-form-field>
             
             @if (passwordErrorMessage) {
                 <p class="error-message">{{passwordErrorMessage}}</p>

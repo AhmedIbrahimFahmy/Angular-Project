@@ -1,6 +1,12 @@
 <app-navbar></app-navbar>
 
+<br>
+    <div *ngIf="examResults.length === 0" class="alert alert-info">
+        No results found.
+    </div>
 
-@for (result of examResults; track $index) {
-    <app-user-exam-result-card [result]="result"></app-user-exam-result-card>
-}
+    <div *ngIf="examResults.length > 0" class="alert alert-info">
+        @for (result of examResults; track $index) {
+            <app-user-exam-result-card [result]="result" [examQuestions]="examQuestions"></app-user-exam-result-card>
+        }
+    </div>

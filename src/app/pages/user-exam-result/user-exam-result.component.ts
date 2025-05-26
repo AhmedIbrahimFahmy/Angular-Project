@@ -7,10 +7,11 @@ import { ExamService } from '../../services/exam.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserAnswer } from '../../models/userAnswer';
+import { NavbarComponent } from "../../components/navbar/navbar.component";
 
 @Component({
   selector: 'app-user-exam-result',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, NavbarComponent],
   templateUrl: './user-exam-result.component.html',
   styleUrl: './user-exam-result.component.css'
 })
