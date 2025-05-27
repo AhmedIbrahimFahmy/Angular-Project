@@ -12,9 +12,12 @@
       <i class="bi bi-plus-circle me-1"></i> Add Exam
     </button>
   </div>
+  <br>
+
+  <app-search-bar placeholder="Search by Exam's name" (searchChanged)="filterExams($event)"></app-search-bar>
 
   <div class="row gy-4">
-    @for (exam of examsList; track $index) {
+    @for (exam of filteredExamList; track $index) {
         <div class="col-md-6 col-lg-4">
             <app-exam-card [exam]="exam"></app-exam-card>
         </div>

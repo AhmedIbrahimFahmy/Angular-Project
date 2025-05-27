@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -10,7 +10,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class SearchBarComponent {
   searchTerm:string = '';
+  
 
+  @Input() placeholder:string = "";
   @Output() searchChanged = new EventEmitter<string>();
 
   onSearchChange() {

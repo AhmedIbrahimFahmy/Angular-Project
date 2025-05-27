@@ -52,10 +52,10 @@ export class ExamResultsComponent implements OnInit {
 
 
   filterResults(searchTerm: string) {
-  const term = searchTerm.toLowerCase().trim();
+    const term = searchTerm.toLowerCase().trim();
 
-  this.filteredResults = this.examResults.filter(result =>
-    result.userName.toLowerCase().includes(term)
-  );
-}
+    this.filteredResults = this.examResults.filter(result =>
+      result.userName.toLowerCase().includes(term)
+    );
+  }
 }

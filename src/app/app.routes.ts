@@ -16,7 +16,7 @@ import { TakenExamsComponent } from './pages/taken-exams/taken-exams.component';
 export const routes: Routes = [
     {
         path: "",
-        redirectTo: "home",
+        redirectTo: "splash",
         pathMatch: "full",
     },
     {

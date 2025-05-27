@@ -5,7 +5,7 @@
   <input
     type="text"
     class="form-control border-start-0"
-    placeholder="Search by username.."
+    [placeholder]="placeholder"
     [(ngModel)]="searchTerm"
     (input)="onSearchChange()"
     style="border-color: #bddaa5;"

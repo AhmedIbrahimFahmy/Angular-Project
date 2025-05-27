@@ -7,7 +7,7 @@
 
     <div *ngIf="examResults.length > 0">
 
-        <app-search-bar (searchChanged)="filterResults($event)"></app-search-bar>
+        <app-search-bar placeholder="Search by username.." (searchChanged)="filterResults($event)"></app-search-bar>
 
         @for (result of filteredResults; track $index) {
             <app-user-exam-result-card [result]="result" [examQuestions]="examQuestions"></app-user-exam-result-card>
