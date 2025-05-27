@@ -7,10 +7,11 @@ import { Exam } from '../../models/exam';
 import { UserExamResultCardComponent } from "../../components/user-exam-result-card/user-exam-result-card.component";
 import { Question } from '../../models/question';
 import { CommonModule } from '@angular/common';
+import { SearchBarComponent } from "../../components/search-bar/search-bar.component";
 
 @Component({
   selector: 'app-exam-results',
-  imports: [UserExamResultCardComponent, NavbarComponent, CommonModule],
+  imports: [UserExamResultCardComponent, NavbarComponent, CommonModule, SearchBarComponent],
   templateUrl: './exam-results.component.html',
   styleUrl: './exam-results.component.css'
 })
@@ -19,6 +20,8 @@ export class ExamResultsComponent implements OnInit {
 
   examResults:UserExamResult[] = [];
   examQuestions: Question[] = [];
+  filteredResults: UserExamResult[] = [];
+
 
   ngOnInit(): void {
       let examId = Number(this.route.snapshot.paramMap.get("examId"));
@@ -27,6 +30,9 @@ export class ExamResultsComponent implements OnInit {
         next: (response) => {
           this.examResults = response.map((res) => UserExamResult.fromJson(res));
           console.log(this.examResults);
+          this.filteredResults = this.examResults;
+
+          this.filteredResults.reverse();
         },
         error: (error) => {
           console.log(`Error : ${error}`);
@@ -43,4 +49,13 @@ export class ExamResultsComponent implements OnInit {
         }
       });
   }
+
+
+  filterResults(searchTerm: string) {
+  const term = searchTerm.toLowerCase().trim();
+
+  this.filteredResults = this.examResults.filter(result =>
+    result.userName.toLowerCase().includes(term)
+  );
+}
 }

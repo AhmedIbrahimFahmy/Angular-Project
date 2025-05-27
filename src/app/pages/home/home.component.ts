@@ -9,7 +9,7 @@ import { FooterComponent } from "../../components/footer/footer.component";
 
 @Component({
   selector: 'app-home',
-  imports: [AdminHomeComponent, UserHomeComponent, NavbarComponent],
+  imports: [AdminHomeComponent, UserHomeComponent, NavbarComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

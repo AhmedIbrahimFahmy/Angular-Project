@@ -77,4 +77,11 @@ export class ExamService {
     return this.http.put<any>(API_ENDPOINTS.PUT_EXAM(examId), data, {headers: headers});
   }
 
+  getExamHasResults(examId:number) : Observable<any>{
+    let token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get(API_ENDPOINTS.GET_EXAM_HAS_RESULTS(examId), {headers: headers});
+  }
+
 }

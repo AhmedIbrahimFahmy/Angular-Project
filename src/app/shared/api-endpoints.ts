@@ -14,6 +14,7 @@ export const API_ENDPOINTS = {
   GET_EXAM: (examId:number) => `${baseUrl}/Exam/${examId}`,
   GET_EXAM_QUESTIONS: (examId:number) => `${baseUrl}/Exam/questions/${examId}`,
   GET_EXAM_RESULTS: (examId:number) => `${baseUrl}/Exam/results/${examId}`,
+  GET_EXAM_HAS_RESULTS: (examId:number) => `${baseUrl}/Exam/has-results/${examId}`,
 
   POST_EXAM: `${baseUrl}/Exam`,
 
