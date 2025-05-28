@@ -6,6 +6,7 @@ import { User } from '../../models/user';
 import { AuthenticationService } from '../../services/authentication.service';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { FooterComponent } from "../../components/footer/footer.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ import { FooterComponent } from "../../components/footer/footer.component";
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  constructor(private userService: UserService,private authService: AuthenticationService){}
+  constructor(private userService: UserService,private authService: AuthenticationService,private router:Router){}
 
   currentUser? : User;
 
@@ -24,6 +25,10 @@ export class HomeComponent implements OnInit {
           this.currentUser = User.fromObject(response);
           this.userService.setUser(this.currentUser);
       },
+      error: (error) => {
+        console.log(`Error ${error}`);
+        this.router.navigate(['/login']);
+      }
     });
   }
 
