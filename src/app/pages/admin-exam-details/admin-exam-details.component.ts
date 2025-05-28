@@ -29,14 +29,14 @@ export class AdminExamDetailsComponent implements OnInit{
     this.examQuestions = [];
       let examId = Number(this.route.snapshot.paramMap.get('examId'));
 
-      console.log(`Exam ID: ${examId}`);
+      // console.log(`Exam ID: ${examId}`);
 
       this.examService.getExamById(examId).subscribe({
         next: (response) => {
           // console.log(response);
           this.currentExam = Exam.fromJson(response);
 
-          console.log(this.currentExam);
+          // console.log(this.currentExam);
 
           this.examService.getExamQuestions(examId).subscribe({
             next: (response) => {
@@ -96,7 +96,7 @@ export class AdminExamDetailsComponent implements OnInit{
   if (confirm('Are you sure you want to delete this exam?')) {
     this.examService.deleteExam(this.currentExam.id).subscribe({
       next: (response) => {
-        console.log(`Response: ${JSON.stringify(response)}`);
+        // console.log(`Response: ${JSON.stringify(response)}`);
       },
       error: (error) => {
         console.log(`Error: ${JSON.stringify(error)}`);

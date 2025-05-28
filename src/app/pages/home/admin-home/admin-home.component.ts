@@ -31,11 +31,11 @@ export class AdminHomeComponent implements OnInit {
         // console.log(JSON.stringify(response, null, 2));
 
         response.forEach((exam) => {
-          console.log(exam);
+          // console.log(exam);
           this.examsList.push(Exam.fromJson(exam));
         });
 
-        console.log(this.examsList);
+        // console.log(this.examsList);
         this.examsList.reverse();
         this.filteredExamList = this.examsList;
       },

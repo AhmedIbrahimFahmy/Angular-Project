@@ -41,19 +41,19 @@ export class ExamStartComponent implements OnInit, OnDestroy{
     // Taking part in the Exam
     this.userAccountService.takePartInExam(this.examId).subscribe({
       next: (response) => {
-        console.log(response);  
+        // console.log(response);  
         alert(response['message']);
 
         // Getting Exam Data
         this.examService.getExamById(this.examId).subscribe({
           next: (response) => {
-            console.log("Got Exam Data");
+            // console.log("Got Exam Data");
             this.exam = Exam.fromJson(response);
 
           // Getting Exam Questions
             this.examService.getExamQuestions(this.examId).subscribe({
             next: (response) => {
-              console.log("Got Exam Exam's Questions");
+              // console.log("Got Exam Exam's Questions");
               this.examQuestions = response.map((q) => Question.fromJson(q));
 
 
@@ -111,12 +111,11 @@ export class ExamStartComponent implements OnInit, OnDestroy{
   submitExam() {
     if (this.examForm.valid) {
       const userAnswers = this.examForm.value.answers;
-      console.log('Submitted Answers:', userAnswers);
+      // console.log('Submitted Answers:', userAnswers);
 
-      // Submit logic goes here...
       this.userAccountService.submitExamAnswers(this.examId, userAnswers).subscribe({
         next: (response) => {
-          console.log(response);
+          // console.log(response);
           alert(response['message']);
 
           this.router.navigate(['/home']);

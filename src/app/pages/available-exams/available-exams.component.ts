@@ -25,7 +25,7 @@ export class AvailableExamsComponent implements OnInit {
       this.userAccountService.getAllAvailableExams().subscribe({
         next: (response) => {
           this.availableExams = response;
-          console.log(this.availableExams);
+          // console.log(this.availableExams);
           this.availableExams.reverse();
           this.filteredAvailableExams = this.availableExams;
         },

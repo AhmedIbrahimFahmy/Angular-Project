@@ -67,7 +67,6 @@ export class AddExamComponent {
   }
   this.submitErrorMessage = "";
 
-  // ✅ Extract Questions from FormGroups
   const newExamQuestions = this.examQuestionsFormGroup.map((group) => {
     const choicesRaw = group.controls['choices'].value as Array<any>;
 
@@ -85,20 +84,18 @@ export class AddExamComponent {
     };
   });
 
-  // ✅ Construct Exam object
   const newExam = {
     name: this.addExamFormGroup.controls['examName'].value!,
     durationInMinutes: Number(this.addExamFormGroup.controls['examDuration'].value),
     questions: newExamQuestions
   };
 
-  console.log(newExam);
+  // console.log(newExam);
 
-  // ✅ Send to API (replace with your actual API service)
   this.examService.addExam(newExam).subscribe({
     next: (response) => {
       alert('✅ Exam created successfully');
-      console.log('Exam submitted successfully:', response);
+      // console.log('Exam submitted successfully:', response);
       this.submitErrorMessage = '';
       this.router.navigate(['/home']);
     },

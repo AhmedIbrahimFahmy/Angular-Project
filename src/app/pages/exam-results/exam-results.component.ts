@@ -29,7 +29,7 @@ export class ExamResultsComponent implements OnInit {
       this.examService.getExamResults(examId).subscribe({
         next: (response) => {
           this.examResults = response.map((res) => UserExamResult.fromJson(res));
-          console.log(this.examResults);
+          // console.log(this.examResults);
           this.filteredResults = this.examResults;
 
           this.filteredResults.reverse();
@@ -42,7 +42,7 @@ export class ExamResultsComponent implements OnInit {
       this.examService.getExamQuestions(examId).subscribe({
         next: (response) => {
           this.examQuestions = response.map((question) => Question.fromJson(question));
-          console.log(this.examQuestions);
+          // console.log(this.examQuestions);
         },
         error: (error) => {
           console.log(`Error: ${error}`);

@@ -48,9 +48,9 @@ export class RegisterComponent {
     var passwordValue = this.registerFormGroup.get("password")!.value;
 
 
-    console.log(usernameValue);
-    console.log(emailValue);
-    console.log(passwordValue);
+    // console.log(usernameValue);
+    // console.log(emailValue);
+    // console.log(passwordValue);
 
 
 

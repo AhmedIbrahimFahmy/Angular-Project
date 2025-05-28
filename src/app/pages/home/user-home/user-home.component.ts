@@ -23,9 +23,9 @@ export class UserHomeComponent implements OnInit{
   ngOnInit(): void {
       this.userAccountService.getAllExamResults().subscribe({
         next: (response) => {
-          console.log(response);
+          // console.log(response);
           this.takenExamsResult = response.map((result) => UserExamResult.fromJson(result));
-          console.log(this.takenExamsResult);
+          // console.log(this.takenExamsResult);
           this.takenExamsResult.reverse();
         },
         error: (error) => {
@@ -37,7 +37,7 @@ export class UserHomeComponent implements OnInit{
       this.userAccountService.getAllAvailableExams().subscribe({
         next: (response) => {
           this.availableExams = response;
-          console.log(this.availableExams);
+          // console.log(this.availableExams);
           this.availableExams.reverse();
         },
         error: (error) => {

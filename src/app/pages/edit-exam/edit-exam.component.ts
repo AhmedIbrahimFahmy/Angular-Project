@@ -49,7 +49,7 @@ export class EditExamComponent implements OnInit {
     next: (response) => {
       this.currentExam = Exam.fromJson(response);
 
-      console.log("Setting the Exam Data to the controllers");
+      // console.log("Setting the Exam Data to the controllers");
       this.editExamFormGroup.controls['examName'].setValue(this.currentExam.name);
       this.editExamFormGroup.controls['examDuration'].setValue(String(this.currentExam.durationInMinutes));
 
@@ -57,8 +57,6 @@ export class EditExamComponent implements OnInit {
       this.examService.getExamQuestions(this.examId).subscribe({
         next: (response) => {
           
-
-
           response.forEach(element => {
             this.currentExam.questions.push(Question.fromJson(element));
           });
@@ -80,10 +78,6 @@ export class EditExamComponent implements OnInit {
         }
       });
 
-
-      
-
-      
     },
     error: (error) => {
       console.log(`Error: ${error}`);
@@ -144,7 +138,6 @@ export class EditExamComponent implements OnInit {
     }
     this.submitErrorMessage = "";
 
-    // ✅ Extract Questions from FormGroups
     const newExamQuestions = this.examQuestionsFormGroup.map((group) => {
       const choicesRaw = group.controls['choices'].value as Array<any>;
 
@@ -162,20 +155,18 @@ export class EditExamComponent implements OnInit {
       };
     });
 
-    // ✅ Construct Exam object
     let newExam = {
       name: this.editExamFormGroup.controls['examName'].value!,
       durationInMinutes: Number(this.editExamFormGroup.controls['examDuration'].value),
       questions: newExamQuestions
     };
 
-    console.log(newExam.questions);
+    // console.log(newExam.questions);
 
-    // ✅ Send to API (replace with your actual API service)
     this.examService.updateExam(this.examId, newExam).subscribe({
       next: (response) => {
         alert('✅ Exam updated successfully');
-        console.log('Exam updated successfully:', response);
+        // console.log('Exam updated successfully:', response);
         this.submitErrorMessage = '';
         this.router.navigate(['/examDetails', this.examId]);
       },

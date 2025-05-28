@@ -27,7 +27,7 @@ export class UserExamResultComponent implements OnInit{
       this.userAccountService.getExamResult(this.examId).subscribe({
         next: (response) => {
           this.userExamResult = UserExamResult.fromJson(response);
-          console.log(this.userExamResult);
+          // console.log(this.userExamResult);
         },
         error: (error) => {
           console.log(error);
@@ -37,7 +37,7 @@ export class UserExamResultComponent implements OnInit{
       this.examService.getExamQuestions(this.examId).subscribe({
         next: (response) => {
           this.examQuestions = response.map((question) => Question.fromJson(question));
-          console.log(this.examQuestions);
+          // console.log(this.examQuestions);
         },
         error: (error) => {
           console.log(`Error: ${error}`);

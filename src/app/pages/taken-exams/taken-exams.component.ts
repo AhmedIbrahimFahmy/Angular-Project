@@ -24,9 +24,9 @@ export class TakenExamsComponent implements OnInit{
   ngOnInit(): void{
     this.userAccountService.getAllExamResults().subscribe({
         next: (response) => {
-          console.log(response);
+          // console.log(response);
           this.takenExamsResult = response.map((result) => UserExamResult.fromJson(result));
-          console.log(this.takenExamsResult);
+          // console.log(this.takenExamsResult);
           this.takenExamsResult.reverse();
           this.filteredExamResults = this.takenExamsResult;
         },
